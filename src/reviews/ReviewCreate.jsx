@@ -1,0 +1,82 @@
+import {useNavigate} from "react-router";
+import {useEffect, useState} from "react";
+import {useReviews} from "../context/ReviewContext.jsx";
+import {useGames} from "../context/GameContext.jsx";
+
+function ReviewCreate() {
+    const navigate = useNavigate()
+    const {succes, createReview} = useReviews()
+    const {games} = useGames()
+    const [formData, setFormData] = useState({
+        title: "",
+        game: "",
+        player: "",
+        playedConsole: "",
+        review: ""
+    })
+
+    const inputHandler = (e) => {
+        const {name, value} = e.target
+        setFormData({
+            ...formData,
+            [name]: value,
+        })
+    }
+
+    const formHandler = (e) => {
+        e.preventDefault()
+        createReview(formData)
+    }
+
+    if (succes) {
+        navigate("/reviews")
+    }
+
+    return (
+        <>
+            <section className={"py-5 text-center w-3/4 m-auto border-5 border-blue-700 p-2 rounded-2xl bg-blue-400"}>
+                <h2 className={"text-3xl font-bold"}>Schrijf review:</h2>
+                <form className={"text-left flex flex-col gap-2"} onSubmit={formHandler}>
+                    <div className={"flex flex-col"}>
+                        <label className={"text-2xl font-bold"} htmlFor="title">Titel:</label>
+                        <input className={"bg-blue-500 p-2"} type="text" name="title" id="title"
+                               value={formData.title} onChange={inputHandler}/>
+                    </div>
+                    <div className={"flex flex-col"}>
+                        <label className={"text-2xl font-bold"} htmlFor="title">Game:</label>
+                        <select className={"bg-blue-500 p-2"} name="game" id="game">
+                            {
+                                games ? games.map((game) =>
+                                        <option key={game.id} value={game._id}>{game.title}</option>) :
+                                    <option>Games worden geladen</option>
+                            }
+                        </select>
+                    </div>
+                    <div className={"flex flex-col"}>
+                        <label className={"text-2xl font-bold"} htmlFor="player">Auteur:</label>
+                        <input className={"bg-blue-500 p-2"} type="text" name="player" id="player"
+                               value={formData.player} onChange={inputHandler}/>
+                    </div>
+                    <div className={"flex flex-col"}>
+                        <label className={"text-2xl font-bold"} htmlFor="playedConsole">Gespeeld op:</label>
+                        <input className={"bg-blue-500 p-2"} type="text" name="playedConsole" id="playedConsole"
+                               value={formData.playedConsole} onChange={inputHandler}/>
+                    </div>
+                    <div className={"flex flex-col"}>
+                        <label className={"text-2xl font-bold"} htmlFor="review">Text:</label>
+                        <input className={"bg-blue-500 p-2"} type="text" name="review" id="review"
+                               value={formData.review} onChange={inputHandler}/>
+                    </div>
+                    <div className={"flex flex-col"}>
+                        <button className={"bg-blue-500 p-2 font-bold hover:ease-in-out hover:bg-blue-600"}
+                                type="submit">Voeg toe
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </>
+    )
+
+}
+
+export default ReviewCreate
