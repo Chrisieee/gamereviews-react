@@ -8,17 +8,34 @@ export function ReviewsProvider({children}) {
     const [reviews, setReviews] = useState(null)
     const [review, setReview] = useState(null)
     const [succes, setSucces] = useState(false)
+    const [page, setPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1)
+    const [filterUri, setFilterUri] = useState("")
+
+    const previousPageHandler = () => {
+        if (page > 1) {
+            setPage(page - 1)
+        }
+    }
+
+    const nextPageHandler = () => {
+        if (page < totalPages) {
+            setPage(page + 1)
+        }
+    }
 
     async function fetchReviews() {
         try {
-            const data = await apiFetch("/reviews", {
+            const data = await apiFetch(`/reviews/?page=${page}&limit=9${filterUri}`, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 }
             })
+            setTotalPages(data.pagination.totalPages)
             setReviews(data.items)
+            console.log(data)
         } catch (e) {
             console.log(e.message)
         }
@@ -112,16 +129,25 @@ export function ReviewsProvider({children}) {
     return (
         <ReviewsContext.Provider
             value={{
+                //variabele:
                 reviews,
                 review,
+                succes, setSucces,
+                page, setPage,
+                totalPages, setTotalPages,
+                filterUri, setFilterUri,
+
+                //functies:
+                //CRUD
+                fetchReviews,
                 fetchDetails,
                 favoriteReview,
                 deleteReview,
-                succes,
-                setSucces,
                 createReview,
-                fetchReviews,
-                editReview
+                editReview,
+                //pagination en filters
+                previousPageHandler,
+                nextPageHandler,
             }}>
             {children}
         </ReviewsContext.Provider>

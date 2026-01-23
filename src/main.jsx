@@ -6,16 +6,19 @@ import {ReviewsProvider} from "./context/ReviewContext.jsx"
 import {GamesProvider} from "./context/gameContext.jsx"
 import {ApiProvider} from "./context/ApiContext.jsx"
 import {FormProvider} from "./context/FormContext.jsx"
+import {GenresProvider} from "./context/GenreContext.jsx";
 
 createRoot(document.getElementById('root')).render(
     <ApiProvider>
         <ReviewsProvider>
             <GamesProvider>
-                <FormProvider>
-                    <StrictMode>
-                        <App/>
-                    </StrictMode>
-                </FormProvider>
+                <GenresProvider>
+                    <FormProvider>
+                        <StrictMode>
+                            <App/>
+                        </StrictMode>
+                    </FormProvider>
+                </GenresProvider>
             </GamesProvider>
         </ReviewsProvider>
     </ApiProvider>

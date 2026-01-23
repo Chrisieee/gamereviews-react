@@ -28,7 +28,7 @@ function ReviewEdit() {
     return (
         <>
             <section className={"py-5 text-center w-3/4 m-auto border-5 border-blue-700 p-2 rounded-2xl bg-blue-400"}>
-                <h2 className={"text-3xl font-bold"}>Schrijf review:</h2>
+                <h2 className={"text-3xl font-bold"}>Bewerk de review:</h2>
                 <form className={"text-left flex flex-col gap-2"} onSubmit={formHandlerEdit}>
                     <div className={"flex flex-col"}>
                         <label className={"text-2xl font-bold"} htmlFor="title">Titel:</label>
@@ -64,7 +64,7 @@ function ReviewEdit() {
                     </div>
                     <div className={"flex flex-col"}>
                         <button className={"bg-blue-500 p-2 font-bold hover:ease-in-out hover:bg-blue-600"}
-                                type="submit">Voeg toe
+                                type="submit">Bewerk
                         </button>
                     </div>
                 </form>
