@@ -2,17 +2,22 @@ import {useNavigate} from "react-router"
 import {useReviews} from "../context/ReviewContext.jsx"
 import {useGames} from "../context/GameContext.jsx"
 import {useForm} from "../context/FormContext.jsx"
+import {useEffect} from "react";
 
 function ReviewCreate() {
     const navigate = useNavigate()
     const {succes, setSucces} = useReviews()
-    const {games} = useGames()
+    const {games, fetchGames} = useGames()
     const {formData, inputHandler, formHandler} = useForm()
 
     if (succes) {
         navigate("/reviews")
         setSucces(false)
     }
+
+    useEffect(() => {
+        fetchGames()
+    }, []);
 
     return (
         <>
@@ -26,10 +31,11 @@ function ReviewCreate() {
                     </div>
                     <div className={"flex flex-col"}>
                         <label className={"text-2xl font-bold"} htmlFor="title">Game:</label>
-                        <select onChange={inputHandler} className={"bg-blue-500 p-2"} name="game" id="game">
+                        <select value={formData.game} onChange={inputHandler} className={"bg-blue-500 p-2"}
+                                name="game" id="game">
                             {
                                 games ? games.map((game) =>
-                                        <option key={game.id} value={game._id}>{game.title}</option>) :
+                                        <option key={game._id} value={game._id.toString()}>{game.title}</option>) :
                                     <option>Games worden geladen</option>
                             }
                         </select>

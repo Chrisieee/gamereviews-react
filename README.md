@@ -13,9 +13,12 @@ Deze website is gemaakt in React en is onderdeel van een Full stack webdevelopme
 
 ## To do:
 
+### Moet:
+
+- Goeie game mee geven fixen
+
 ### Wil ik:
 
-- Game create
 - 404 status afhandelen (11)
 - Modal (12)
 

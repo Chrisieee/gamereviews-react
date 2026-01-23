@@ -5,7 +5,7 @@ function Layout() {
         <div className={"h-screen flex flex-col justify-between w-screen"}>
             <header className={"text-center p-2 border-b-5 border-blue-700 bg-blue-400"}>
                 <h1 className={"text-4xl font-bold"}>Welkom op deze pagina!</h1>
-                <nav className={"flex justify-between px-100 pt-4"}>
+                <nav className={"flex justify-between w-2/4 mx-auto pt-4"}>
                     <Link to={"/reviews"}>Reviews</Link>
                     <Link to={"/reviews/create"}>Schrijf review</Link>
                     <Link to={"/games/create"}>Voeg game toe</Link>

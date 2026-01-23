@@ -1,12 +1,16 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import {useApi} from "./ApiContext";
-import {useNavigate} from "react-router";
 
 const GamesContext = createContext();
 
 export function GamesProvider({children}) {
     const {apiFetch} = useApi();
     const [games, setGames] = useState(null)
+    const [succes, setSucces] = useState(false)
+    const [formData, setFormData] = useState({
+        title: "",
+        genres: []
+    })
 
     async function fetchGames() {
         try {
@@ -23,12 +27,30 @@ export function GamesProvider({children}) {
         }
     }
 
+    async function createGame(formData) {
+        try {
+            const data = await apiFetch("/games", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
+            })
+            if (!data.message) {
+                setSucces(true)
+            }
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+
     useEffect(() => {
         fetchGames()
     }, []);
 
     return (
-        <GamesContext.Provider value={{games, fetchGames}}>
+        <GamesContext.Provider value={{games, fetchGames, succes, setSucces, createGame, formData, setFormData}}>
             {children}
         </GamesContext.Provider>
     )

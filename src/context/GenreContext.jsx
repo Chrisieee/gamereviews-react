@@ -22,6 +22,10 @@ export function GenresProvider({children}) {
         }
     }
 
+    useEffect(() => {
+        fetchGenres()
+    }, []);
+
     return (
         <GenresContext.Provider value={{genres, fetchGenres}}>
             {children}

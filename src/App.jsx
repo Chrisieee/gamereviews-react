@@ -5,6 +5,7 @@ import ReviewList from "./reviews/ReviewList.jsx"
 import ReviewDetails from "./reviews/ReviewDetails.jsx"
 import ReviewCreate from "./reviews/ReviewCreate.jsx"
 import ReviewEdit from "./reviews/ReviewEdit.jsx"
+import GameCreate from "./games/GameCreate.jsx";
 
 function App() {
     const router = createBrowserRouter([
@@ -33,7 +34,7 @@ function App() {
                 },
                 {
                     path: "/games/create",
-                    element: <ReviewEdit/>
+                    element: <GameCreate/>
                 },
             ]
         }

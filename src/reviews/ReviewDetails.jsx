@@ -17,7 +17,7 @@ function ReviewDetails() {
 
     return (
         <section
-            className={"border-5 border-blue-700 p-2 rounded-2xl bg-blue-400 w-3/4 mx-auto h-175"}>
+            className={"border-5 border-blue-700 p-2 rounded-2xl bg-blue-400 w-3/4 mx-auto h-150"}>
             {review ? (
                 <div className={"w-full flex flex-col justify-between h-full"}>
                     <div className={"flex flex-col gap-2"}>

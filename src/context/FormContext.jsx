@@ -42,6 +42,14 @@ export function FormProvider({children}) {
     const formHandler = (e) => {
         e.preventDefault()
         createReview(formData)
+        console.log(formData)
+        setFormData({
+            title: "",
+            game: "",
+            player: "",
+            playedConsole: "",
+            review: ""
+        })
     }
 
     return (
