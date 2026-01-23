@@ -12,7 +12,8 @@ function ReviewList() {
         totalPages,
         previousPageHandler,
         nextPageHandler,
-        setFilterUri
+        setFilterUri,
+        filterUri
     } = useReviews();
     const {genres, fetchGenres} = useGenres()
     const [filterData, setFilterData] = useState({
@@ -26,7 +27,7 @@ function ReviewList() {
     }, [page]);
 
     const inputHandler = (e) => {
-        const {name, value, checked, multiple, options} = e.target
+        const {name, checked, multiple, options} = e.target
         if (multiple) {
             const selectedValues = Array.from(options)
                 .filter(option => option.selected)
@@ -41,25 +42,31 @@ function ReviewList() {
                 [name]: checked,
             })
         }
-        console.log(filterData)
     }
 
     const filterHandler = (e) => {
         e.preventDefault()
-        if (filterData.genres.length > 0 && filterData.favorite !== "") {
+        if (filterData.genres.length > 0 && filterData.favorite) {
             setFilterUri(`&genres=${filterData.genres}&favorite=true`)
         } else if (filterData.genres.length > 0) {
             setFilterUri(`&genres=${filterData.genres}`)
-        } else if (filterData.favorite !== "") {
+        } else if (filterData.favorite) {
             setFilterUri(`&favorite=true`)
         }
-        fetchReviews()
     }
+
+    const resetFilters = () => {
+        setFilterUri("")
+    }
+
+    useEffect(() => {
+        fetchReviews()
+    }, [filterUri])
 
     return (
         <>
             <section
-                className={"mt-2 text-center w-3/4 m-auto border-5 border-blue-700 p-2 rounded-2xl bg-blue-400"}>
+                className={"mt-2 text-center w-3/4 m-auto border-5 border-blue-700 p-2 rounded-2xl bg-blue-400 flex justify-evenly gap-8 content-baseline"}>
                 <form onSubmit={filterHandler}>
                     <div className={"flex justify-evenly gap-8 content-baseline"}>
                         <div className={"flex gap-2 "}>
@@ -86,6 +93,9 @@ function ReviewList() {
                         </div>
                     </div>
                 </form>
+                <button className={"rounded-2xl bg-blue-500 p-2 px-5 font-bold hover:ease-in-out hover:bg-blue-600"}
+                        onClick={resetFilters}>Reset filters
+                </button>
             </section>
 
             <section className={"flex flex-col justify-center text-center gap-4 w-3/4 mx-auto my-2"}>
@@ -101,10 +111,14 @@ function ReviewList() {
             </section>
 
             <section className={"flex justify-center gap-5"}>
-                <button className={"hover:underline"} onClick={previousPageHandler} disabled={page === 1}>Vorige
+                <button
+                    className={"mb-2 rounded-2xl bg-blue-400 p-2 px-5 font-bold hover:ease-in-out hover:bg-blue-500"}
+                    onClick={previousPageHandler} disabled={page === 1}>⬅️ Vorige
                 </button>
-                <button className={"hover:underline"} onClick={nextPageHandler}
-                        disabled={page === totalPages}>Volgende
+                <button
+                    className={"mb-2 rounded-2xl bg-blue-400 p-2 px-5 font-bold hover:ease-in-out hover:bg-blue-500"}
+                    onClick={nextPageHandler}
+                    disabled={page === totalPages}>Volgende ➡️
                 </button>
             </section>
         </>

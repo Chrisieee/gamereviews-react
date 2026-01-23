@@ -31,6 +31,10 @@ function App() {
                     path: "/reviews/:id/edit",
                     element: <ReviewEdit/>
                 },
+                {
+                    path: "/games/create",
+                    element: <ReviewEdit/>
+                },
             ]
         }
     ])

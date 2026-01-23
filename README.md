@@ -2,15 +2,24 @@
 
 Deze website is gemaakt in React en is onderdeel van een Full stack webdevelopment project.
 
+## Done:
+
+- CRUD (4.5)
+- Routing (6)
+- Context API (7)
+- Filters (8)
+- Patch (9)
+- Pagination (10)
+
 ## To do:
 
-### Basic:
+### Wil ik:
 
 - Game create
+- 404 status afhandelen (11)
+- Modal (12)
 
-### Extra:
+### Eventueel:
 
-- Modal
 - Animaties?
-- 404 status afhandelen?
 - Inloggen?
