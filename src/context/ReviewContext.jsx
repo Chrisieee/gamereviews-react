@@ -24,10 +24,6 @@ export function ReviewsProvider({children}) {
         }
     }
 
-    // useEffect(() => {
-    //     fetchReviews()
-    // }, []);
-
     async function fetchDetails(id) {
         try {
             const data = await apiFetch(`/reviews/${id}`, {
@@ -54,6 +50,24 @@ export function ReviewsProvider({children}) {
                 body: JSON.stringify(formData)
             })
 
+            if (!data.message) {
+                setSucces(true)
+            }
+        } catch (e) {
+            console.log(e.message)
+        }
+    }
+
+    async function editReview(formData, id) {
+        try {
+            const data = await apiFetch(`/reviews/${id}`, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
+            })
             if (!data.message) {
                 setSucces(true)
             }
@@ -97,7 +111,18 @@ export function ReviewsProvider({children}) {
 
     return (
         <ReviewsContext.Provider
-            value={{reviews, review, fetchDetails, favoriteReview, deleteReview, succes, createReview, fetchReviews}}>
+            value={{
+                reviews,
+                review,
+                fetchDetails,
+                favoriteReview,
+                deleteReview,
+                succes,
+                setSucces,
+                createReview,
+                fetchReviews,
+                editReview
+            }}>
             {children}
         </ReviewsContext.Provider>
     )

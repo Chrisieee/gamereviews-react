@@ -17,7 +17,7 @@ function ReviewDetails() {
 
     return (
         <section
-            className={"border-5 border-blue-700 p-2 rounded-2xl bg-blue-400"}>
+            className={"border-5 border-blue-700 p-2 rounded-2xl bg-blue-400 w-3/4 mx-auto"}>
             {review ? (
                 <div className={"w-full"}>
                     <h2 className={"text-4xl font-bold text-center"}> {review.title} </h2>

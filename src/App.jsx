@@ -28,7 +28,7 @@ function App() {
                     element: <ReviewCreate/>
                 },
                 {
-                    path: "/reviews/:id/delete",
+                    path: "/reviews/:id/edit",
                     element: <ReviewEdit/>
                 },
             ]

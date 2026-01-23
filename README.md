@@ -6,14 +6,12 @@ Deze website is gemaakt in React en is onderdeel van een Full stack webdevelopme
 
 ### Basic:
 
-- Edit
+- Game create
 
 ### Extra:
 
-- Context API
 - Modal
 - Filteren
-- Favoriete aanmaken
 - Pagination
 - Animaties?
 - 404 status afhandelen?

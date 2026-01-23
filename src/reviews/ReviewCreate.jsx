@@ -1,35 +1,17 @@
-import {useNavigate} from "react-router";
-import {useEffect, useState} from "react";
-import {useReviews} from "../context/ReviewContext.jsx";
-import {useGames} from "../context/GameContext.jsx";
+import {useNavigate} from "react-router"
+import {useReviews} from "../context/ReviewContext.jsx"
+import {useGames} from "../context/GameContext.jsx"
+import {useForm} from "../context/FormContext.jsx"
 
 function ReviewCreate() {
     const navigate = useNavigate()
-    const {succes, createReview} = useReviews()
+    const {succes, setSucces} = useReviews()
     const {games} = useGames()
-    const [formData, setFormData] = useState({
-        title: "",
-        game: "",
-        player: "",
-        playedConsole: "",
-        review: ""
-    })
-
-    const inputHandler = (e) => {
-        const {name, value} = e.target
-        setFormData({
-            ...formData,
-            [name]: value,
-        })
-    }
-
-    const formHandler = (e) => {
-        e.preventDefault()
-        createReview(formData)
-    }
+    const {formData, inputHandler, formHandler} = useForm()
 
     if (succes) {
         navigate("/reviews")
+        setSucces(false)
     }
 
     return (
@@ -44,7 +26,7 @@ function ReviewCreate() {
                     </div>
                     <div className={"flex flex-col"}>
                         <label className={"text-2xl font-bold"} htmlFor="title">Game:</label>
-                        <select className={"bg-blue-500 p-2"} name="game" id="game">
+                        <select onChange={inputHandler} className={"bg-blue-500 p-2"} name="game" id="game">
                             {
                                 games ? games.map((game) =>
                                         <option key={game.id} value={game._id}>{game.title}</option>) :
