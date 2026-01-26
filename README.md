@@ -11,16 +11,14 @@ Deze website is gemaakt in React en is onderdeel van een Full stack webdevelopme
 - Patch (9)
 - Pagination (10)
 - 404 status afhandelen (11)
+- Modal (12)
 
 ## To do:
 
-### Moet:
-
 ### Wil ik:
 
-- Modal (12)
+- Animaties?
 
 ### Eventueel:
 
-- Animaties?
 - Inloggen?

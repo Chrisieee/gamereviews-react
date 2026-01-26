@@ -1,4 +1,4 @@
-import {Link, Outlet} from "react-router"
+import {Link, Outlet, useLocation} from "react-router"
 
 function Layout() {
     return (
@@ -6,9 +6,9 @@ function Layout() {
             <header className={"text-center p-2 border-b-5 border-blue-700 bg-blue-400"}>
                 <h1 className={"text-4xl font-bold"}>Welkom op deze pagina!</h1>
                 <nav className={"flex justify-between w-2/4 mx-auto pt-4"}>
-                    <Link to={"/reviews"}>Reviews</Link>
-                    <Link to={"/reviews/create"}>Schrijf review</Link>
-                    <Link to={"/games/create"}>Voeg game toe</Link>
+                    <Link className={"hover:underline"} to={"/reviews"}>Reviews</Link>
+                    <Link className={"hover:underline"} to={"/reviews/create"}>Schrijf review</Link>
+                    <Link className={"hover:underline"} to={"/games/create"}>Voeg game toe</Link>
                 </nav>
             </header>
 

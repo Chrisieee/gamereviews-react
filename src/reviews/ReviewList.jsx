@@ -60,7 +60,7 @@ function ReviewList() {
     }
 
     useEffect(() => {
-        fetchReviews()
+        fetchReviews(page)
     }, [filterUri])
 
     return (

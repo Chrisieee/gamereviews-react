@@ -13,6 +13,10 @@ export function ApiProvider({children}) {
             ...options,
         })
 
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
         const text = await res.text()
         return text ? JSON.parse(text) : null
     }

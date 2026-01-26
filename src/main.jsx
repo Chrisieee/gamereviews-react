@@ -7,6 +7,7 @@ import {GamesProvider} from "./context/gameContext.jsx"
 import {ApiProvider} from "./context/ApiContext.jsx"
 import {FormProvider} from "./context/FormContext.jsx"
 import {GenresProvider} from "./context/GenreContext.jsx";
+import {BrowserRouter} from "react-router";
 
 createRoot(document.getElementById('root')).render(
     <ApiProvider>
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')).render(
                 <GenresProvider>
                     <FormProvider>
                         <StrictMode>
-                            <App/>
+                            <BrowserRouter>
+                                <App/>
+                            </BrowserRouter>
                         </StrictMode>
                     </FormProvider>
                 </GenresProvider>

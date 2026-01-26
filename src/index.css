@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.button-spacing {
+    top: 2vh;
+    right: 20vw;
+}

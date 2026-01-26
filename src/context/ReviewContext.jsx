@@ -106,6 +106,7 @@ export function ReviewsProvider({children}) {
                 })
             })
             await fetchDetails(id)
+            await fetchReviews()
         } catch (e) {
             console.log(e.message)
         }
