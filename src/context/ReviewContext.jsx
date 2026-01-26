@@ -113,16 +113,14 @@ export function ReviewsProvider({children}) {
 
     async function deleteReview(id) {
         try {
-            const data = await apiFetch(`/reviews/${id}`, {
+            await apiFetch(`/reviews/${id}`, {
                 method: "DELETE",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
                 }
             })
-            if (!data.message) {
-                setSucces(true)
-            }
+            setSucces(true)
         } catch (e) {
             console.log(e.message)
         }

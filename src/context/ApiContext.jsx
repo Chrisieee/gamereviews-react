@@ -1,8 +1,8 @@
-import {createContext, useContext} from "react";
+import {createContext, useContext} from "react"
 
-const ApiContext = createContext();
+const ApiContext = createContext()
 
-const BASE_URL = "http://145.24.237.28:8000";
+const BASE_URL = "http://145.24.237.28:8000"
 
 export function ApiProvider({children}) {
     async function apiFetch(endpoint, options = {}) {
@@ -11,9 +11,10 @@ export function ApiProvider({children}) {
                 ...options.headers,
             },
             ...options,
-        });
+        })
 
-        return res.json();
+        const text = await res.text()
+        return text ? JSON.parse(text) : null
     }
 
     return (
@@ -24,5 +25,5 @@ export function ApiProvider({children}) {
 }
 
 export function useApi() {
-    return useContext(ApiContext);
+    return useContext(ApiContext)
 }

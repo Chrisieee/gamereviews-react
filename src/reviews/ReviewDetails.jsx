@@ -8,12 +8,14 @@ function ReviewDetails() {
     const params = useParams()
 
     useEffect(() => {
-        fetchDetails(params.id)
-    }, [params.id])
+        if (succes) {
+            navigate("/reviews")
+        }
+    }, [succes, navigate])
 
-    if (succes) {
-        navigate("/reviews")
-    }
+    useEffect(() => {
+        fetchDetails(params.id)
+    }, [params.id,])
 
     return (
         <section

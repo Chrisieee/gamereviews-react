@@ -6,6 +6,7 @@ import ReviewDetails from "./reviews/ReviewDetails.jsx"
 import ReviewCreate from "./reviews/ReviewCreate.jsx"
 import ReviewEdit from "./reviews/ReviewEdit.jsx"
 import GameCreate from "./games/GameCreate.jsx";
+import ErrorPage from "./Error.jsx";
 
 function App() {
     const router = createBrowserRouter([
@@ -22,7 +23,8 @@ function App() {
                 },
                 {
                     path: "/reviews/:id",
-                    element: <ReviewDetails/>
+                    element: <ReviewDetails/>,
+                    errorElement: <ErrorPage/>
                 },
                 {
                     path: "/reviews/create",
@@ -30,7 +32,8 @@ function App() {
                 },
                 {
                     path: "/reviews/:id/edit",
-                    element: <ReviewEdit/>
+                    element: <ReviewEdit/>,
+                    errorElement: <ErrorPage/>
                 },
                 {
                     path: "/games/create",
