@@ -49,7 +49,10 @@ function ReviewDetails() {
                     </div>
                 </div>
             ) : (
-                <p className={"text-2xl font-bold text-center"}> Review is aan het laden of bestaat niet.</p>
+                <div>
+                    <h1 className={"text-4xl font-bold text-center pt-10"}>404</h1>
+                    <p className={"text-2xl font-bold text-center"}>Not found.</p>
+                </div>
             )}
         </section>
     )

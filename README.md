@@ -17,7 +17,7 @@ Deze website is gemaakt in React en is onderdeel van een Full stack webdevelopme
 
 ### Wil ik:
 
-- Animaties?
+- Animaties
 
 ### Eventueel:
 

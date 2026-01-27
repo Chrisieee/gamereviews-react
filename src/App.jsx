@@ -11,15 +11,17 @@ import Modal from "./Modal.jsx";
 
 function App() {
     const location = useLocation()
-    const backgroundLocation = location.state?.backgroundLocation
+    const backgroundLocation = location.state?.backgroundLocation || location
     console.log("location.state:", location.state)
+    console.log("location:", location)
 
     return (
         <>
-            <Routes location={backgroundLocation || location}>
+            <Routes location={backgroundLocation}>
                 <Route element={<Layout/>}>
-                    <Route path="/" element={<ReviewList/>} errorElement={<ErrorPage/>}/>
+                    <Route path="/" element={<ReviewList/>}/>
                     <Route path="/reviews" element={<ReviewList/>}/>
+                    <Route path="/reviews/:id" element={<ReviewList/>}/>
                     <Route path="/reviews/create" element={<ReviewCreate/>}/>
                     <Route path="/reviews/:id/edit" element={<ReviewEdit/>}/>
                     <Route path="/games/create" element={<GameCreate/>}/>
@@ -27,7 +29,7 @@ function App() {
                 </Route>
             </Routes>
 
-            {backgroundLocation || location && (
+            {backgroundLocation && location.pathname.startsWith("/reviews/") && (
                 <Routes>
                     <Route
                         path="/reviews/:id"

@@ -1,6 +1,7 @@
-import {Link, Outlet, useLocation} from "react-router"
+import {Link, Outlet} from "react-router"
 
 function Layout() {
+
     return (
         <div className={"h-screen flex flex-col justify-between w-screen"}>
             <header className={"text-center p-2 border-b-5 border-blue-700 bg-blue-400"}>
@@ -12,7 +13,7 @@ function Layout() {
                 </nav>
             </header>
 
-            <main className={"w-screen"}>
+            <main className={"w-screen page"}>
                 <Outlet/>
             </main>
 
