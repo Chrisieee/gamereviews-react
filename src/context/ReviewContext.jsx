@@ -35,7 +35,7 @@ export function ReviewsProvider({children}) {
             })
             setTotalPages(data.pagination.totalPages)
             setReviews(data.items)
-            console.log(data)
+            // console.log(data)
         } catch (e) {
             console.log(e.message)
         }

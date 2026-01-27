@@ -15,7 +15,7 @@ export function GenresProvider({children}) {
                     Accept: "application/json",
                 }
             })
-            console.log(data)
+            // console.log(data)
             await setGenres(data)
         } catch (e) {
             console.log(e.message)

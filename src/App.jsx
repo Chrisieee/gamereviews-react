@@ -8,10 +8,13 @@ import ReviewEdit from "./reviews/ReviewEdit.jsx"
 import GameCreate from "./games/GameCreate.jsx";
 import ErrorPage from "./Error.jsx";
 import Modal from "./Modal.jsx";
+import {TransitionGroup, CSSTransition} from "react-transition-group";
+import {useRef} from "react";
 
 function App() {
     const location = useLocation()
     const backgroundLocation = location.state?.backgroundLocation || location
+    const nodeRef = useRef(null)
     console.log("location.state:", location.state)
     console.log("location:", location)
 
@@ -21,8 +24,8 @@ function App() {
                 <Route element={<Layout/>}>
                     <Route path="/" element={<ReviewList/>}/>
                     <Route path="/reviews" element={<ReviewList/>}/>
+                    <Route path="/review/create" element={<ReviewCreate/>}/>
                     <Route path="/reviews/:id" element={<ReviewList/>}/>
-                    <Route path="/reviews/create" element={<ReviewCreate/>}/>
                     <Route path="/reviews/:id/edit" element={<ReviewEdit/>}/>
                     <Route path="/games/create" element={<GameCreate/>}/>
                     <Route path="*" element={<ErrorPage/>}/>

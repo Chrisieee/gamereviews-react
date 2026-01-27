@@ -8,3 +8,21 @@
     top: 2vh;
     right: 20vw;
 }
+
+.route-enter {
+    opacity: 0;
+}
+
+.route-enter-active {
+    opacity: 1;
+    transition: opacity 200ms ease;
+}
+
+.route-exit {
+    opacity: 1;
+}
+
+.route-exit-active {
+    opacity: 0;
+    transition: opacity 200ms ease;
+}

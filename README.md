@@ -12,12 +12,11 @@ Deze website is gemaakt in React en is onderdeel van een Full stack webdevelopme
 - Pagination (10)
 - 404 status afhandelen (11)
 - Modal (12)
+- Animaties? (13)
 
 ## To do:
 
 ### Wil ik:
-
-- Animaties
 
 ### Eventueel:
 
